@@ -1,0 +1,29 @@
+{
+  "name": "gemini-image-generator",
+  "version": "1.0.0",
+  "description": "Generate images from text using Google Gemini AI",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "generate": "npm run dev"
+  },
+  "keywords": [
+    "gemini",
+    "ai",
+    "image-generation",
+    "text-to-image"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.28.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}

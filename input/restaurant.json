@@ -1,0 +1,369 @@
+{
+    "Breakfast": {
+        "Items": [
+            {
+                "name": "Masala Vada 1pc",
+                "price": 15,
+                "tags": [
+                    "vada",
+                    "budget"
+                ]
+            },
+            {
+                "name": "Tatte Idli 1pc",
+                "price": 25,
+                "tags": [
+                    "idli",
+                    "budget"
+                ]
+            },
+            {
+                "name": "Uddina Vada 1pc",
+                "price": 25,
+                "tags": [
+                    "vada",
+                    "budget"
+                ]
+            },
+            {
+                "name": "Idli 2pc",
+                "price": 35,
+                "tags": [
+                    "idli"
+                ]
+            },
+            {
+                "name": "Khara Bath",
+                "price": 40,
+                "tags": [
+                    "bath"
+                ]
+            },
+            {
+                "name": "Kesari Bath",
+                "price": 40,
+                "tags": [
+                    "bath"
+                ]
+            },
+            {
+                "name": "Chapathi 2pc",
+                "price": 45,
+                "tags": [
+                    "chapathi"
+                ]
+            },
+            {
+                "name": "Tatte Idli 1pc With Pudi & Ghee",
+                "price": 50,
+                "tags": [
+                    "idli",
+                    "premium"
+                ]
+            },
+            {
+                "name": "Idli 2 & 1 Vada",
+                "price": 55,
+                "tags": [
+                    "idli",
+                    "vada",
+                    "combo"
+                ]
+            },
+            {
+                "name": "Pongal",
+                "price": 55,
+                "tags": [
+                    "pongal"
+                ]
+            },
+            {
+                "name": "Rice Bath",
+                "price": 60,
+                "tags": [
+                    "bath"
+                ]
+            },
+            {
+                "name": "Chow Chow Bath",
+                "price": 70,
+                "tags": [
+                    "bath"
+                ]
+            },
+            {
+                "name": "Mini Tiffin Combo (Kesari Bath, Idli, Dosa, Vada, Rice Bath, Chutney, Sambar & Filter Coffee)",
+                "price": 120,
+                "tags": [
+                    "combo",
+                    "premium",
+                    "full-meal"
+                ]
+            }
+        ]
+    },
+    "Dosa": {
+        "Items": [
+            {
+                "name": "Plain Dosa",
+                "price": 60,
+                "tags": [
+                    "plain"
+                ]
+            },
+            {
+                "name": "Set Dosa",
+                "price": 70,
+                "tags": [
+                    "set"
+                ]
+            },
+            {
+                "name": "Masala Dosa",
+                "price": 70,
+                "tags": [
+                    "masala"
+                ]
+            },
+            {
+                "name": "Ghee/Butter Dosa",
+                "price": 80,
+                "tags": [
+                    "ghee-butter"
+                ]
+            },
+            {
+                "name": "Onion Dosa",
+                "price": 90,
+                "tags": [
+                    "onion"
+                ]
+            },
+            {
+                "name": "Open Dosa",
+                "price": 100,
+                "tags": [
+                    "open"
+                ]
+            },
+            {
+                "name": "Paneer Masala Dosa",
+                "price": 110,
+                "tags": [
+                    "paneer",
+                    "premium"
+                ]
+            },
+            {
+                "name": "Mysore Masala Dosa",
+                "price": 110,
+                "tags": [
+                    "mysore",
+                    "premium"
+                ]
+            }
+        ]
+    },
+    "Lunch": {
+        "Items": [
+            {
+                "name": "Butter Milk",
+                "price": 15,
+                "tags": [
+                    "beverage"
+                ]
+            },
+            {
+                "name": "Mini Meals (Rice, Sambar, Rasam, Papad, Butter Milk, Pickle)",
+                "price": 60,
+                "tags": [
+                    "combo",
+                    "full-meal"
+                ]
+            }
+        ]
+    },
+    "Beverages": {
+        "Items": [
+            {
+                "name": "Tea",
+                "price": 15,
+                "tags": [
+                    "tea",
+                    "budget"
+                ]
+            },
+            {
+                "name": "Instant Coffee",
+                "price": 15,
+                "tags": [
+                    "coffee",
+                    "budget"
+                ]
+            },
+            {
+                "name": "Ginger Tea",
+                "price": 20,
+                "tags": [
+                    "tea"
+                ]
+            },
+            {
+                "name": "Masala Tea",
+                "price": 20,
+                "tags": [
+                    "tea"
+                ]
+            },
+            {
+                "name": "Lemon Tea",
+                "price": 20,
+                "tags": [
+                    "tea"
+                ]
+            },
+            {
+                "name": "Green Tea",
+                "price": 20,
+                "tags": [
+                    "tea"
+                ]
+            },
+            {
+                "name": "Instant Coffee Jaggery",
+                "price": 20,
+                "tags": [
+                    "coffee"
+                ]
+            },
+            {
+                "name": "Filter Coffee",
+                "price": 20,
+                "tags": [
+                    "coffee"
+                ]
+            },
+            {
+                "name": "Black Coffee",
+                "price": 20,
+                "tags": [
+                    "coffee"
+                ]
+            },
+            {
+                "name": "Filter Coffee Jaggery",
+                "price": 25,
+                "tags": [
+                    "coffee",
+                    "premium"
+                ]
+            },
+            {
+                "name": "Cold Coffee",
+                "price": 50,
+                "tags": [
+                    "coffee",
+                    "cold"
+                ]
+            }
+        ]
+    },
+    "Chinese": {
+        "Items": [
+            {
+                "name": "Vegetable Fried Rice",
+                "price": 90,
+                "tags": [
+                    "fried-rice",
+                    "veg"
+                ]
+            },
+            {
+                "name": "Schezwan Fried Rice",
+                "price": 90,
+                "tags": [
+                    "fried-rice",
+                    "spicy"
+                ]
+            },
+            {
+                "name": "Veg Noodles",
+                "price": 90,
+                "tags": [
+                    "noodles",
+                    "veg"
+                ]
+            },
+            {
+                "name": "Schezwan Noodles",
+                "price": 100,
+                "tags": [
+                    "noodles",
+                    "spicy"
+                ]
+            },
+            {
+                "name": "Gobi Manchurian",
+                "price": 100,
+                "tags": [
+                    "manchurian",
+                    "veg"
+                ]
+            },
+            {
+                "name": "Mushroom Manchurian",
+                "price": 110,
+                "tags": [
+                    "manchurian",
+                    "mushroom"
+                ]
+            },
+            {
+                "name": "Mushroom Chilli",
+                "price": 110,
+                "tags": [
+                    "chilli",
+                    "mushroom"
+                ]
+            },
+            {
+                "name": "Paneer Manchurian",
+                "price": 120,
+                "tags": [
+                    "manchurian",
+                    "paneer",
+                    "premium"
+                ]
+            },
+            {
+                "name": "Paneer Chilli",
+                "price": 120,
+                "tags": [
+                    "chilli",
+                    "paneer",
+                    "premium"
+                ]
+            }
+        ]
+    },
+    "Snacks": {
+        "Items": [
+            {
+                "name": "Bonda / Bajji / Pakoda",
+                "price": 50,
+                "tags": [
+                    "fried",
+                    "mixed"
+                ]
+            },
+            {
+                "name": "Aloo Bonda 3pc",
+                "price": 50,
+                "tags": [
+                    "bonda",
+                    "potato"
+                ]
+            }
+        ]
+    }
+}
