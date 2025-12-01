@@ -13,8 +13,12 @@ interface MenuItem {
   tags: string[];
 }
 
-interface Category {
+interface Subcategory {
   Items: MenuItem[];
+}
+
+interface Category {
+  [subcategory: string]: Subcategory;
 }
 
 interface MenuData {
@@ -28,6 +32,8 @@ interface GenerateImageOptions {
 }
 
 const PROMPT_TEMPLATE = `[Subject: {service_name}]
+[Category: {category}]
+[Subcategory: {subcategory}]
 [Composition: clean 1:1 square composition showing the service or treatment visually — realistic, professional, and minimal]
 [Environment: studio setup with pure white seamless background, no clutter, no text]
 [Lighting: bright soft daylight or diffused softbox light, evenly illuminating the subject with natural soft shadows for realism]
@@ -54,15 +60,16 @@ function formatFileName(name: string): string {
     .toLowerCase();
 }
 
-function getCacheKey(itemName: string, category: string): string {
-  return `${category}::${itemName}`;
+function getCacheKey(itemName: string, category: string, subcategory: string): string {
+  return `${category}::${subcategory}::${itemName}`;
 }
 
 async function generatePromptWithGPT(
   item: MenuItem,
-  category: string
+  category: string,
+  subcategory: string
 ): Promise<string> {
-  const cacheKey = getCacheKey(item.name, category);
+  const cacheKey = getCacheKey(item.name, category, subcategory);
 
   // Return cached prompt if exists
   if (promptCache.has(cacheKey)) {
@@ -86,6 +93,7 @@ async function generatePromptWithGPT(
 
 Given:
 - Category: "${category}"
+- Subcategory: "${subcategory}"
 - Item Name: "${item.name}"
 - Tags: ${item.tags.join(", ")}
 - Price: ${item.price}
@@ -96,10 +104,12 @@ ${PROMPT_TEMPLATE}
 
 Rules:
 1. Replace {service_name} with the actual item name
-2. Fill each section with specific, actionable details for "${item.name}"
-3. Make it realistic and professional
-4. Keep sections concise but detailed
-5. ONLY output the structured prompt with no additional text
+2. Replace {category} with "${category}"
+3. Replace {subcategory} with "${subcategory}"
+4. Fill each section with specific, actionable details for "${item.name}"
+5. Make it realistic and professional
+6. Keep sections concise but detailed
+7. ONLY output the structured prompt with no additional text
 
 Generate the prompt now:`,
         },
@@ -242,43 +252,49 @@ async function main() {
 
       for (const [categoryName, category] of Object.entries(menuData)) {
         console.log(`\n📁 Category: ${categoryName}`);
-        console.log(`   Items: ${category.Items.length}\n`);
 
         const formattedCategory = formatFileName(categoryName);
 
-        for (const item of category.Items) {
-          const fileName = `${formatFileName(item.name)}.png`;
-          const categoryDir = path.join(outputBaseDir, segment, formattedCategory);
-          const outputPath = path.join(categoryDir, fileName);
+        for (const [subcategoryName, subcategory] of Object.entries(category)) {
+          console.log(`\n   📂 Subcategory: ${subcategoryName}`);
+          console.log(`      Items: ${subcategory.Items.length}\n`);
 
-          console.log(`   📷 Processing: ${item.name}`);
+          const formattedSubcategory = formatFileName(subcategoryName);
 
-          if (fs.existsSync(outputPath)) {
-            console.log(`      ⏭ Skipping (already exists)`);
-            totalSkipped++;
-            continue;
-          }
+          for (const item of subcategory.Items) {
+            const fileName = `${formatFileName(item.name)}.png`;
+            const subcategoryDir = path.join(outputBaseDir, segment, formattedCategory, formattedSubcategory);
+            const outputPath = path.join(subcategoryDir, fileName);
 
-          try {
-            // Stage 1: Generate prompt with ChatGPT
-            const prompt = await generatePromptWithGPT(item, categoryName);
+            console.log(`      📷 Processing: ${item.name}`);
 
-            // Stage 2: Generate image with Gemini
-            await generateImage({
-              prompt,
-              outputPath,
-            });
+            if (fs.existsSync(outputPath)) {
+              console.log(`         ⏭ Skipping (already exists)`);
+              totalSkipped++;
+              continue;
+            }
 
-            totalProcessed++;
+            try {
+              // Stage 1: Generate prompt with ChatGPT
+              const prompt = await generatePromptWithGPT(item, categoryName, subcategoryName);
 
-            // Rate limiting: 1 second between requests
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-          } catch (error) {
-            console.error(
-              `      ✗ Failed to process ${item.name}`
-            );
-            totalFailed++;
-            // Continue with next item
+              // Stage 2: Generate image with Gemini
+              await generateImage({
+                prompt,
+                outputPath,
+              });
+
+              totalProcessed++;
+
+              // Rate limiting: 1 second between requests
+              await new Promise((resolve) => setTimeout(resolve, 1000));
+            } catch (error) {
+              console.error(
+                `         ✗ Failed to process ${item.name}`
+              );
+              totalFailed++;
+              // Continue with next item
+            }
           }
         }
       }
